@@ -1,0 +1,87 @@
+COMMENT INSTALLER LA VM ET LA PARAMETRER
+
+-------------------------------------------------------------------------------------------------------------------------------------
+RAPPELS SUR LA VM :
+- Utilisateur = user42 ; Mot de passe = user42
+- Impossible d'utiliser le pavé numérique
+- Copier/Coller depuis/dans un doc, un navigateur, etc = CTRL+C / CTRL+V
+- Copier/Coller depuis/dans un terminal = CTRL+MAJ+C / CTRL+MAJ+V
+- Si vous passez la VM en mode plein écran, lisez bien le message qui s'affiche car il contient la combinaison de touches
+pour sortir du mode et celle ci est différente selon les ordinateurs. (Sur les macs de l'ecole = Touche 'command' de gauche + 'F')
+-------------------------------------------------------------------------------------------------------------------------------------
+
+0. Prérequis
+
+	0.0. Avoir un dossier perso dans le sgoinfre (uniquement si l'installation se fait sur les macs de l'école)
+mkdir /sgoinfre/goinfre/Perso/mon_login
+chmod 700 /sgoinfre/goinfre/Perso/mon_login (restreint les droits des autres utilisateurs sur le dossier)
+NB : ce dossier est persistant, contrairement au goinfre il ne s'efface pas, vous pourrez donc conserver votre VM
+et y accéder depuis n'importe quel poste.
+
+	0.1. Avoir installé VirtualBox
+MacOS : Dans le MSC (Managed Software Center) : Installer VirtualBox et VirtualBox Extension Pack
+Linux : https://www.virtualbox.org/wiki/Linux_Downloads
+
+------
+
+1. Télécharger et importer la VM
+
+$INSTALL_PATH :
+ - Sur les macs de l'école = "/sgoinfre/goinfre/Perso/mon_login/"
+ - Chez vous : n'importe quel dossier avec au moins 10Go libres, 20Go c'est encore mieux.
+
+	1.0. Télécharger l'image
+curl https://cdn.42.fr/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+	1.1. Ouvrir l'image dans VirtualBox
+open $INSTALL_PATH/xubuntu-42.ova
+/!\ Si cette étape échoue, c'est probablement que VirtualBox n'est pas installé.
+	1.2. Paramétrer le chemin de stockage de la VM
+Modifier le chemin en $INSTALL_PATH, soit en le tapant directement, soit en sélectionnant 'Other' puis naviguer.
+Cliquer sur Importer
+
+------
+
+2. Démarrer la VM
+
+Dans VirtualBox, sélectionner "xubuntu" dans le panneau de gauche
+Cliquer sur la flèche verte Start
+Une fois qu'elle a démarré, si l'écran reste noir, rétrécir la fenêtre jusqu'a ce que l'écran de login s'affiche correctement
+
+------
+
+3. Premiers réglages
+
+Accéder aux paramètres :
+Dans la VM, en haut à gauche de l'écran, cliquer sur la petite souris bleue.
+Sélectionner 'Paramètres' dans le menu de droite.
+
+	3.0. Paramétrer l'affichage
+Paramètres > Affichage
+Sélectionner la résolution optimale (sur les macs de l'école, celles qui commencent par 1920 sont pas mal)
+Appliquer
+	3.1. Changer la disposition du clavier (si vous avez un qwerty)
+Paramètres > Clavier
+Dans l'onglet 'Disposition', désactiver les paramètres par défaut
+Ajouter le clavier Anglais US
+Supprimer le clavier Français
+Fermer
+	3.2. Partager le presse-papier : permet de faire des copier/coller entre la VM et votre ordinateur.
+Dans la barre de menus de VirtualBox (tout en haut, hors de la fenêtre de la VM) :
+Cliquer sur Devices > Insert Guest Additions CD image (charge un CD virtuel sur le bureau)
+Ouvrir un terminal dans la VM (Terminator ou clic droit sur le bureau > 'ouvrir un terminal'), taper :
+	sudo /media/user42/VBox_GAs_6.0.14/autorun.sh
+Redémarrer la VM >> cf étape 4
+Ouvrir à nouveau un terminal dans la VM et taper :
+	sudo sh Documents/install.sh
+Voilà normalement la VM est prête :)
+
+------
+
+4. Eteindre ou Redémarrer la VM
+
+	4.0. SOIT avec VirtualBox:
+Fermer la fenêtre et choisir entre :
+- 'Power off the machine' = éteindre la VM, si vous avez correctement sauvegardé votre travail, vous ne perdrez rien.
+- 'Save the machine state' = rend la VM inactive, au redémarrage vous reprendrez exactement où vous en étiez.
+	4.1. SOIT avec Ubuntu:
+La manière classique, cliquer sur la petite souris bleue et sélectionner le bouton on/off en bas à droite du menu.
