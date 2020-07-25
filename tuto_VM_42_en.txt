@@ -1,0 +1,89 @@
+HOW TO INSTALL AND CONFIGURE THE 42 VM
+
+-------------------------------------------------------------------------------------------------------------------------------------
+GOOD TO KNOW ABOUT THE VM :
+- Username = user42 ; password = user42
+- You can't use the numeric keypad
+- Copy/Paste from/in a document, a browser, etc = CTRL+C / CTRL+V
+- Copy/Paste from/in a terminal = CTRL+SHIFT+C / CTRL+SHIFT+V
+- If you switch to fullscreen mode, take note of the displayed message because it contains the set of keys needed to get out of this mode.
+It's different depending on the computer (on the school macs = left 'command' key + 'F')
+-------------------------------------------------------------------------------------------------------------------------------------
+
+0. Before you begin
+
+	0.0. Have your own directory in sgoinfre (only if you're installing on school macs)
+mkdir /sgoinfre/goinfre/Perso/my_login
+chmod 700 /sgoinfre/goinfre/Perso/my_login (prevents other users from accessing your directory)
+NB : this directory is persistent, unlike the goinfre it doesn't clear itself, so you will be able to keep your VM and access it from any station.
+
+	0.1. Have VirtualBox installed
+MacOS : In the MSC (Managed Software Center) : Install VirtualBox
+Linux : https://www.virtualbox.org/wiki/Linux_Downloads
+
+------
+
+1. Download and import the VM
+
+$INSTALL_PATH :
+ - On school macs = "/sgoinfre/goinfre/Perso/my_login/"
+ - At home : any directory with at least 10Go free, 20Go will be even better.
+
+	1.0. Download the image
+curl https://cdn.42.fr/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+	1.1. Open the image in VirtualBox
+open $INSTALL_PATH/xubuntu-42.ova
+/!\ If this step fails, it might be because VirtualBox is not installed.
+	1.2. Configure a storage path for the VM
+Modify the path to $INSTALL_PATH, either by typing it directly, or by selecting 'Other' and browse.
+Click Import
+
+------
+
+2. Start the VM
+
+In VirtualBox, select "xubuntu" in the left pannel.
+Click on the green arrow Start
+Once it's started, if the screen stays black, try and shrink the window until you see the logging screen appear.
+At the top right of the screen, you should be able to change the language.
+Log in using user42 credentials.
+
+------
+
+3. Set up the VM
+
+Access Parameters :
+In the VM, in the top left corner of the screen, click the little blue mouse.
+Select 'Settings' in the right pannel.
+
+	3.0. Change screen size
+Settings > Display
+Select the best resolution (on school macs, the ones that start with 1920 are quite good)
+Apply
+	3.1. Change keyboard layout (if necessary)
+Settings > Keyboard
+In the 'Layout' tab, disable default settings.
+Add the keyboard you wish to use.
+Delete the default keyboard (otherwise changes won't be made)
+Close
+	3.2. Share the clipboard : you'll need it to be able to copy/paste between the VM and your computer.
+In the VirtualBox menu bar (at the top of the screen, outside of the VM window) :
+Click on Devices > Insert Guest Additions CD image (loads a virtual CD on the Desktop)
+Open a terminal in the VM (Terminator or right-click on Desktop > 'open a terminal'), and type :
+	sudo /media/user42/VBox_GAs_6.0.14/autorun.sh
+Restart the VM >> see step 4
+Open a terminal int the VM again and type :
+	sudo sh Documents/install.sh
+There you go, the VM should now be all set :)
+
+------
+
+4. Shut down or Restart the VM
+
+	4.0. EITHER with VirtualBox:
+Close the window and choose between :
+- 'Power off the machine' = Shuts down the VM, if you have properly saved your work, you won't lose anything.
+- 'Save the machine state' = Makes the VM inactive, at start up you will find everything the way you left it.
+/!\ If you need to restart the VM to apply come changes, don't select 'Save the state' because it doesn't shut down.
+	4.1. OR with Ubuntu:
+The classic way, click the little blue mouse et select the on/off button at the bottom right of the menu.
