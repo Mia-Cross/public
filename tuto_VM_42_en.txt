@@ -30,7 +30,8 @@ $INSTALL_PATH :
  - At home : any directory with at least 10Go free, 20Go will be even better.
 
 	1.0. Download the image
-curl https://cdn.42.fr/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+curl http://vm-42.s3.fr-par.scw.cloud/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+/!\ If this step fails it can be because the url is outdated. In this case just look for the new link on Slack or Discord.
 	1.1. Open the image in VirtualBox
 open $INSTALL_PATH/xubuntu-42.ova
 /!\ If this step fails, it might be because VirtualBox is not installed.

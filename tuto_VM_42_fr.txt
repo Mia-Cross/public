@@ -31,7 +31,9 @@ $INSTALL_PATH :
  - Chez vous : n'importe quel dossier avec au moins 10Go libres, 20Go c'est encore mieux.
 
 	1.0. Télécharger l'image
-curl https://cdn.42.fr/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+curl http://vm-42.s3.fr-par.scw.cloud/xubuntu-42.ova --output $INSTALL_PATH/xubuntu-42.ova
+/!\ Si cette étape échoue, c'est probablement que l'url n'est plus d'actualité. Dans ce cas il suffit de chercher le nouveau lien
+sur le Slack ou le Discord de l'école.
 	1.1. Ouvrir l'image dans VirtualBox
 open $INSTALL_PATH/xubuntu-42.ova
 /!\ Si cette étape échoue, c'est probablement que VirtualBox n'est pas installé.
